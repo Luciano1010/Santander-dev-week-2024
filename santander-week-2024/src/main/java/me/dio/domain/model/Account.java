@@ -1,11 +1,31 @@
 package me.dio.domain.model;
 
+import java.math.BigDecimal;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity(name = "tb_account")
 public class Account {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String accountNumber;
-    private String accountAgency;
-    private double accountBalance;
-    private double accountLimit;
+    // unique deixando o numero da conta o usuario de forma exclusiva (unico)
+    @Column(unique = true)
+    private String Number;
+
+    private String Agency;
+
+    // precision deixando o saldo com 11 inteiros para 2 casas decimais
+    @Column(precision= 2, scale= 13)
+    private BigDecimal Balance;
+    
+    @Column(name= "adicional_limit" ,precision= 2, scale= 13)
+    private BigDecimal Limit;
     
     public Long getId() {
         return id;
@@ -14,28 +34,28 @@ public class Account {
         this.id = id;
     }
     public String getAccountNumber() {
-        return accountNumber;
+        return Number;
     }
     public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
+        this.Number = accountNumber;
     }
     public String getAccountAgency() {
-        return accountAgency;
+        return Agency;
     }
     public void setAccountAgency(String accountAgency) {
-        this.accountAgency = accountAgency;
+        this.Agency = accountAgency;
     }
-    public double getAccountBalance() {
-        return accountBalance;
+    public BigDecimal getAccountBalance() {
+        return Balance;
     }
-    public void setAccountBalance(double accountBalance) {
-        this.accountBalance = accountBalance;
+    public void setAccountBalance(BigDecimal accountBalance) {
+        this.Balance = accountBalance;
     }
-    public double getAccountLimit() {
-        return accountLimit;
+    public BigDecimal getAccountLimit() {
+        return Limit;
     }
-    public void setAccountLimit(double accountLimit) {
-        this.accountLimit = accountLimit;
+    public void setAccountLimit(BigDecimal accountLimit) {
+        this.Limit = accountLimit;
     }
 
 }
