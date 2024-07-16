@@ -16,15 +16,15 @@ public class Account {
     private Long id;
     // unique deixando o numero da conta o usuario de forma exclusiva (unico)
     @Column(unique = true)
-    private String Number;
+    private String number;
 
     private String Agency;
 
     // precision deixando o saldo com 11 inteiros para 2 casas decimais
-    @Column(precision= 2, scale= 13)
+    @Column(precision= 13, scale= 2)
     private BigDecimal Balance;
     
-    @Column(name= "adicional_limit" ,precision= 2, scale= 13)
+    @Column(name= "adicional_limit" ,precision= 13, scale= 2)
     private BigDecimal Limit;
     
     public Long getId() {
@@ -34,10 +34,10 @@ public class Account {
         this.id = id;
     }
     public String getAccountNumber() {
-        return Number;
+        return number;
     }
     public void setAccountNumber(String accountNumber) {
-        this.Number = accountNumber;
+        this.number = accountNumber;
     }
     public String getAccountAgency() {
         return Agency;
